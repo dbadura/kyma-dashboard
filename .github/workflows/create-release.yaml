@@ -83,15 +83,15 @@ jobs:
           git tag ${{ github.event.inputs.name }}
           git push origin ${{ github.event.inputs.name }}
 
-  builds:
-    needs: create-tag
-    uses: ./.github/workflows/kyma-dashboard-dev-build.yml #TODO: Why it's only for dev?, it should be configurable.
-    with:
-      tag: '${{ github.event.inputs.name }}'
+  #  builds:
+  #    needs: create-tag
+  #    uses: ./.github/workflows/kyma-dashboard-dev-build.yml #TODO: Why it's only for dev?, it should be configurable.
+  #    with:
+  #      tag: '${{ github.event.inputs.name }}'
 
   create-draft:
     name: Create draft release
-    needs: builds
+    #    needs: builds
     runs-on: ubuntu-latest
 
     steps:
