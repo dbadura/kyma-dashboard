@@ -101,7 +101,7 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref_name }} # checkout to latest branch changes ( by default this action checkouts to the SHA that triggers action )
 
-      - uses: ./.github/actions/setup-go
+      #      - uses: ./.github/actions/setup-go
 
       - name: Create draft release
         id: create-draft
