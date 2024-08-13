@@ -42,6 +42,8 @@ if [[ "${HTTP_CODE}" != "200" ]]; then
   exit 1
 fi
 
+echo ${JSON_RESPONSE}
+
 echo "Finding release id for: ${PULL_BASE_REF}"
 RELEASE_ID=$(jq <<< ${JSON_RESPONSE} --arg tag "${PULL_BASE_REF}" '.[] | select(.tag_name == $ARGS.named.tag) | .id')
 
