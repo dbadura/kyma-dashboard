@@ -9,6 +9,7 @@ set -E          # needs to be set if we want the ERR trap
 set -o pipefail # prevents errors in a pipeline from being masked
 
 RELEASE_TAG=$1
+echo "Doing draft release: ${RELEASE_TAG}"
 
 REPOSITORY=${REPOSITORY:-kyma-project/kyma-dashboard}
 GITHUB_URL=https://api.github.com/repos/${REPOSITORY}
@@ -33,4 +34,5 @@ CURL_RESPONSE=$(curl -L \
   ${GITHUB_URL}/releases \
   -d "$JSON_PAYLOAD")
 
+echo "Response: ${CURL_RESPONSE}"
 echo "$(echo $CURL_RESPONSE | jq -r ".id")"
