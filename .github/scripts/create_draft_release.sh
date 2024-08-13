@@ -34,5 +34,4 @@ CURL_RESPONSE=$(curl -L \
   ${GITHUB_URL}/releases \
   -d "$JSON_PAYLOAD")
 
-echo "Response: ${CURL_RESPONSE}"
 echo "$(echo $CURL_RESPONSE | jq -r ".id")"

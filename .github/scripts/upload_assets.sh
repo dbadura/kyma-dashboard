@@ -29,10 +29,12 @@ uploadFile() {
 #make generate chart with desired img.
 
 echo "Fetching releases"
+REPOSITORY=${REPOSITORY:-kyma-project/kyma-dashboard}
+
 CURL_RESPONSE=$(curl -w "%{http_code}" -sL \
                 -H "Accept: application/vnd.github+json" \
                 -H "Authorization: Bearer $GITHUB_TOKEN" \
-                https://api.github.com/repos/kyma-project/serverless-manager/releases)
+                "https://api.github.com/repos/${REPOSITORY}/releases")
 JSON_RESPONSE=$(sed '$ d' <<< "${CURL_RESPONSE}")
 HTTP_CODE=$(tail -n1 <<< "${CURL_RESPONSE}")
 if [[ "${HTTP_CODE}" != "200" ]]; then
@@ -58,6 +60,6 @@ create by to test empty release flow
 EOT
 
 echo "Updating github release with assets"
-UPLOAD_URL="https://uploads.github.com/repos/kyma-project/kyma-dashboard/releases/${RELEASE_ID}/assets"
+UPLOAD_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${RELEASE_ID}/assets"
 
 uploadFile ${DASHBOARD_K8S} "${UPLOAD_URL}?name=${DASHBOARD_K8S}"

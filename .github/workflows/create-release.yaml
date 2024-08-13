@@ -107,9 +107,10 @@ jobs:
         id: create-draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPOSITORY: dbadura/kyma-dashboard
-        run: ./.github/scripts/create_draft_release.sh ${{ github.event.inputs.name }}
-      #          echo "release_id=$RELEASE_ID" >> $GITHUB_OUTPUT
+          REPOSITORY: dbadura/kyma-dashboard #TODO: Remove it
+        run: |
+          RELEASE_ID=$(./.github/scripts/create_draft_release.sh ${{ github.event.inputs.name }})
+          echo "release_id=$RELEASE_ID" >> $GITHUB_OUTPUT
 
       - name: Create release assets #TODO: Probably here we should generate busola chart
         id: create-assets
@@ -117,6 +118,7 @@ jobs:
           IMG: 'europe-docker.pkg.dev/kyma-project/prod/serverless-operator:${{ github.event.inputs.name }}'
           PULL_BASE_REF: ${{ github.event.inputs.name }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: dbadura/kyma-dashboard #TODO: Remove it
         run: ./.github/scripts/upload_assets.sh
 
     outputs:
