@@ -106,6 +106,7 @@ jobs:
           REPOSITORY: dbadura/kyma-dashboard #TODO: Remove it
         run: |
           RELEASE_ID=$(./.github/scripts/create_draft_release.sh ${{ github.event.inputs.name }})
+          echo $RELEASE_ID
           echo "release_id=$RELEASE_ID" >> $GITHUB_OUTPUT
 
       - name: Create release assets #TODO: Probably here we should generate busola chart
