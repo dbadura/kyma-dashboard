@@ -144,4 +144,5 @@ jobs:
       - name: Publish release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: dbadura/kyma-dashboard #TODO: Remove it
         run: ./.github/scripts/publish_release.sh ${{ needs.create-draft.outputs.release_id }} ${{ github.event.inputs.latest_release }}
