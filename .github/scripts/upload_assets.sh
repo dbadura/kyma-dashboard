@@ -31,6 +31,7 @@ uploadFile() {
 echo "Fetching releases"
 REPOSITORY=${REPOSITORY:-kyma-project/kyma-dashboard}
 echo "https://api.github.com/repos/${REPOSITORY}/releases"
+echo "release id ${RELEASE_ID}"
 
 CURL_RESPONSE=$(curl -w "%{http_code}" -sL \
                 -H "Accept: application/vnd.github+json" \
