@@ -107,7 +107,7 @@ jobs:
         id: create-draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: RELEASE_ID=$(./.github/scripts/create_draft_release.sh ${{ github.event.inputs.name }})
+        run: ./.github/scripts/create_draft_release.sh ${{ github.event.inputs.name }}
       #          echo "release_id=$RELEASE_ID" >> $GITHUB_OUTPUT
 
       - name: Create release assets #TODO: Probably here we should generate busola chart
