@@ -46,7 +46,7 @@ fi
 echo ${JSON_RESPONSE}
 
 echo "Finding release id for: ${PULL_BASE_REF}"
-RELEASE_ID=$(jq <<< ${JSON_RESPONSE} --arg tag "${PULL_BASE_REF}" '.[] | select(.tag_name == $ARGS.named.tag) | .id')
+#RELEASE_ID=$(jq <<< ${JSON_RESPONSE} --arg tag "${PULL_BASE_REF}" '.[] | select(.tag_name == $ARGS.named.tag) | .id')
 
 echo "Got '${RELEASE_ID}' release id"
 if [ -z "${RELEASE_ID}" ]
