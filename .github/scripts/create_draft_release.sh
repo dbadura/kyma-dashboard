@@ -9,7 +9,7 @@ set -E          # needs to be set if we want the ERR trap
 set -o pipefail # prevents errors in a pipeline from being masked
 
 RELEASE_TAG=$1
->&2 echo "Doing draft release: ${RELEASE_TAG}"
+>&2 echo "Creating draft release: ${RELEASE_TAG}"
 
 REPOSITORY=${REPOSITORY:-kyma-project/kyma-dashboard}
 GITHUB_URL=https://api.github.com/repos/${REPOSITORY}

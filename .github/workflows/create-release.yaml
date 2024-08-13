@@ -115,7 +115,7 @@ jobs:
           PULL_BASE_REF: ${{ github.event.inputs.name }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPOSITORY: dbadura/kyma-dashboard #TODO: Remove it
-          RELEASE_ID: ${{ steps.vars.outputs.release_id }}
+          RELEASE_ID: ${{ steps.create-draft.outputs.release_id }}
         run: ./.github/scripts/upload_assets.sh
 
     outputs:
