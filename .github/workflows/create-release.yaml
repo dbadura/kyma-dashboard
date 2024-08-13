@@ -107,6 +107,7 @@ jobs:
         id: create-draft
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: dbadura/kyma-dashboard
         run: ./.github/scripts/create_draft_release.sh ${{ github.event.inputs.name }}
       #          echo "release_id=$RELEASE_ID" >> $GITHUB_OUTPUT
 
